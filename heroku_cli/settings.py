@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-e3hf67wp&ch8z8xe3qp$1)z%$)^%&oz#hecxp8x!)g!cq7aab_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['heroku-cli-example.herokuapp.com']
 
 
 # Application definition
@@ -74,10 +74,11 @@ WSGI_APPLICATION = 'heroku_cli.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": dj_database_url.parse(os.getenv("DATABASE_URL"))
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    # }
 }
 
 
